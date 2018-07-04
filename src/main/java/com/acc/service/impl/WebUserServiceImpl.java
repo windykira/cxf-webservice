@@ -3,6 +3,8 @@ package com.acc.service.impl;
 import com.acc.model.DcTestEntity;
 import com.acc.service.WebUserService;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.w3c.dom.Document;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,6 +21,7 @@ public class WebUserServiceImpl implements WebUserService {
         return id;
     }
 
+    @ResponseBody
     public List<DcTestEntity> getData() {
 
         List<DcTestEntity> list = new ArrayList();
@@ -39,6 +42,7 @@ public class WebUserServiceImpl implements WebUserService {
         dcTestEntity2.setName("中西医");
         dcTestEntity2.setValuen("3");
         list.add(dcTestEntity2);
+        Document document = null;
         return list;
     }
 }

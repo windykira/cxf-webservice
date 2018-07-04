@@ -19,9 +19,13 @@
         .dc-object {
             position: absolute;
             left: 200px;
-            top: 60px;
+            top: 80px;
         }
     </style>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="js/inserttable.js"></script>
     <script type="text/javascript" src="js/permission.js"></script>
@@ -58,11 +62,13 @@
         }
 
         function oneMenu() {
-            var ctl = document.getElementById("myWriter");
-            ctl.ExecuteCommand("FileOpen", false, "D://test.xml");
+            //var ctl = document.getElementById("myWriter");
+            //ctl.ExecuteCommand("FileOpen", false, "D://test.xml");
 
-            strXML = ctl.Document.XMLText;
+            //strXML = ctl.Document.XMLText;
             //ctl.Document.LoadFromString("","xml");
+            var a = new ActiveXObject("wscript.shell");
+            a.run("D://Dc//EIE11_ZH-CN_WOL_WIN764.EXE");
         }
 
         function oneMenu1() {
@@ -228,6 +234,7 @@
 <body>
 <div class="dc-menu">
     <form action="#" id="myform">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addMedical" data-backdrop="static">新增</button>
         <input type="button" id="create" value="新增" onclick="createDC()"/>
         <input type="button" id="save" value="保存" onclick="saveDC()"/>
         <input type="button" id="preview" value="预览" onclick="previewDC()"/>
@@ -244,6 +251,111 @@
 
     </form>
     <img src="image/test1.png" alt="字体" onclick="fontDC()">
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="addMedical" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增病历</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-5 col-md-4">
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" style="margin-bottom:8px;">
+                            <li value="1" class="active" onclick="reloadTemplateTable(this.value)"><a href="#home" data-toggle="tab">全院</a></li>
+                            <li value="2" onclick="reloadTemplateTable(this.value)"><a href="#profile" data-toggle="tab">科室</a></li>
+                            <li value="3" onclick="reloadTemplateTable(this.value)"><a href="#messages" data-toggle="tab">个人</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="home">
+                                <ul class="list-group">
+                                    <!--<li class="list-group-item active">病案首页</li>
+                                    <li class="list-group-item">入院记录</li>
+                                    <li class="list-group-item">病程记录</li>
+                                    <li class="list-group-item">手术记录</li>
+                                    <li class="list-group-item">会诊记录</li>
+                                    <li class="list-group-item">知情同意书</li>
+                                    <li class="list-group-item">出院记录</li>-->
+                                </ul>
+                            </div>
+                            <div class="tab-pane" id="profile">22.</div>
+                            <div class="tab-pane" id="messages">.33</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7 col-md-8">
+                        <table id="templateTable" data-mobile-responsive="true">
+                        </table>
+                        <!--<table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th> 模板名称 </th>
+                                <th>创建人</th>
+                                <th>创建时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>产科病案首页</td>
+                                <td>xxx</td>
+                                <td>2018-06-18</td>
+                            </tr>
+                            <tr>
+                                <td>产科病案首页</td>
+                                <td>xxx</td>
+                                <td>2018-06-18</td>
+                            </tr>
+                            <tr>
+                                <td>产科病案首页</td>
+                                <td>xxx</td>
+                                <td>2018-06-18</td>
+                            </tr>
+                            <tr>
+                                <td>产科病案首页</td>
+                                <td>xxx</td>
+                                <td>2018-06-18</td>
+                            </tr>
+                            <tr>
+                                <td>产科病案首页</td>
+                                <td>xxx</td>
+                                <td>2018-06-18</td>
+                            </tr>
+                            <tr>
+                                <td>产科病案首页</td>
+                                <td>xxx</td>
+                                <td>2018-06-18</td>
+                            </tr>
+                            <tr>
+                                <td>产科病案首页</td>
+                                <td>xxx</td>
+                                <td>2018-06-18</td>
+                            </tr>
+                            <tr>
+                                <td>产科病案首页</td>
+                                <td>xxx</td>
+                                <td>2018-06-18</td>
+                            </tr>
+                            <tr>
+                                <td>产科病案首页</td>
+                                <td>xxx</td>
+                                <td>2018-06-18</td>
+                            </tr>
+                            </tbody>
+                        </table>-->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onClick="window.open('template-manager-add.html')">确定</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <ul>
@@ -269,6 +381,8 @@
             <param name="BorderStyle" value="3DFixed"/>
             <param name="InitalizeParameterValues" value="PatientName:张三"/>
             <param name="Font" value="宋体,20"/>
+            <param name="wmode" value="transparent" />
+            <param name="wmode" value="opaque" />
         </object>
     </li>
 </ul>
